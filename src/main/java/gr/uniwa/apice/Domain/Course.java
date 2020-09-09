@@ -1,7 +1,7 @@
 package gr.uniwa.apice.Domain;
 
 
-import gr.uniwa.apice.Enums.Courses;
+import gr.uniwa.apice.Enum.Courses;
 
 import java.util.Calendar;
 

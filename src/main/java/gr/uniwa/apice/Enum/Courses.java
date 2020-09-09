@@ -1,4 +1,4 @@
-package gr.uniwa.apice.Enums;
+package gr.uniwa.apice.Enum;
 
 public enum Courses {
     C("Προγραμματισμός Υπολογιστών","1ο","Βασικός Κύκλος Σπουδών"),
