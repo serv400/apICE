@@ -1,12 +1,21 @@
 package gr.uniwa.apice.Domain;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "professor")
 public class Professor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int profId;
     private String fname;
     private String lname;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Course> coursesDoing;
+
+    public Professor() {
+    }
 
     public int getProfId() {
         return profId;

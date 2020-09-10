@@ -3,15 +3,26 @@ package gr.uniwa.apice.Domain;
 
 import gr.uniwa.apice.Enum.Courses;
 
+import javax.persistence.*;
 import java.util.Calendar;
 
+@Entity
+@Table(name = "course")
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int courseId;
+    @Version
     private int version;
+    @Enumerated(EnumType.STRING)
     private Courses courseDetails;
     private Calendar dateOfHappening;
     private String className;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Professor professor;
+
+    public Course() {
+    }
 
     public int getCourseId() {
         return courseId;

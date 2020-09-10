@@ -1,12 +1,42 @@
 package gr.uniwa.apice.Domain;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name = "student")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
+    @Column(nullable = false)
     private String fname;
+    @Column(nullable = false)
     private String lname;
+    @Column(nullable = false,unique = true)
     private String code;
+    @Column(nullable = false,unique = true)
     private String username;
+    @Column(nullable = false)
     private String password;
+    private String role="ROLE_USER";
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Course> courseSet;
+
+    public Student(String fname, String lname, String code, String username, String password, String role) {
+        this.fname = fname;
+        this.lname = lname;
+        this.code = code;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Student() {
+    }
 
     public int getStudentId() {
         return studentId;
@@ -54,5 +84,21 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Course> getCourseSet() {
+        return courseSet;
+    }
+
+    public void setCourseSet(Set<Course> courseSet) {
+        this.courseSet = courseSet;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
