@@ -24,7 +24,16 @@ public class Student {
     private String password;
     private String role="ROLE_USER";
     @OneToMany(cascade = CascadeType.ALL)
+    private Set<Friend> friends;
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Course> courseSet;
+
+    public Student(String fname, String lname, String code, String username) {
+        this.fname = fname;
+        this.lname = lname;
+        this.code = code;
+        this.username = username;
+    }
 
     public Student(String fname, String lname, String code, String username, String password, String role) {
         this.fname = fname;
@@ -100,5 +109,13 @@ public class Student {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Friend> friends) {
+        this.friends = friends;
     }
 }

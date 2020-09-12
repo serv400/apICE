@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
     <title>APICE</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
     <link rel="stylesheet" href="css/all.min.css" />
@@ -12,6 +15,9 @@
     <link rel="stylesheet" href="css/templatemo-dream-pulse.css" />
 </head>
 <body>
+<script>
+    alert("Επιτυχής εγγραφή. Προσπάθησε να συνδεθείς με το όνομα χρήστη και τον κωδικό πρόσβασης που συμπλήρωσες.");
+</script>
 <main class="container-fluid">
     <div class="row">
         <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
@@ -28,8 +34,14 @@
                 </div>
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active">
-                            <span class="d-inline-block mr-3">Επιστροφη</span>
+                        <a href="/login" class="nav-link active">
+                            <span class="d-inline-block mr-3">Συνδεση</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/signup" class="nav-link active">
+                            <span class="d-inline-block mr-3">Εγγραφη</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
@@ -49,16 +61,11 @@
         <div class="tm-section-wrap">
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
-                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Συνδεση</h2>
-                    <form role="form" th:method="post">
-                        <label>Όνομα Χρήστη</label>
-                        <input type="text" id="username" name="username">
-
-                        <label>Κωδικός Πρόσβασης</label>
-                        <input type="password" id="password" name="password">
-
-                        <input type="submit">
-                    </form>
+                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Γνωριζοντας το APICE...</h2>
+                    <p class="tm-color-gray">
+                        Το APICE αποτελεί ένα REST API φτιαγμένο με Spring Frameworks.Μέσω αυτού η επικοινωνία και τα μπερδέματα μεταξύ φίλων-φοιτητών για ερωτήσεις σχετικά με το πότε , σε ποιό τμήμα και με ποιόν καθηγητή θα είναι σε κάποιο εργαστηριακό μάθημα αποτελούν παρελθόν.
+                        Το APICE ,ουσιαστικά, είναι μια ατζέντα όπου οι φοιτητές προσθέτουν τους φίλους τους και βλέπουν τις πληροφορίες για το τι εργαστήρια και πότε τα έχουν δηλώσει.
+                    </p>
                 </div>
             </section>
         </div>

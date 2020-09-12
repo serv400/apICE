@@ -30,19 +30,24 @@ public class WelcomeController {
         return "signup";
     }
 
-    @GetMapping("/error")
+    @GetMapping("/registration-error")
     public String error(){
-        return "error";
+        return "registration-error";
+    }
+
+    @GetMapping("/registration-successful")
+    public String success(){
+        return "registration-successful";
     }
 
     @RequestMapping(value = "/signup",method= RequestMethod.POST)
-    public String saveStudent(Student student) throws Exception{
+    public String saveStudent(Student student){
         try {
             studentService.addStudent(student);
-            return "/user";
+            return "registration-successful";
         }catch (Exception e){
             e.getMessage();
-            return "/error";
+            return "registration-error";
         }
     }
 

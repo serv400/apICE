@@ -14,6 +14,12 @@ public class StudentServiceImpl implements StudentService{
     private StudentRepo studentRepo;
 
     @Override
+    public Student getStudentById(int id) {
+        Student student = studentRepo.findStudentByStudentId(id);
+        return student;
+    }
+
+    @Override
     public void addStudent(Student s) {
         s.setPassword(bCryptPasswordEncoder.encode(s.getPassword()));
         studentRepo.save(s);
