@@ -1,6 +1,5 @@
 package gr.uniwa.apice.Config;
 
-import gr.uniwa.apice.Domain.Student;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -23,7 +22,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         for (GrantedAuthority grantedAuthority : authorities) {
             System.out.println("role " + grantedAuthority.getAuthority());
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
-                redirectUrl = "/user";
+                redirectUrl = "/user/"+authentication.getName();
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 redirectUrl = "/admin";

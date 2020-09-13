@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER")
                 .antMatchers("/**").permitAll()
-                .and().formLogin().loginPage("/login").successHandler(successHandler).and().logout().logoutSuccessUrl("/");
+                .and().formLogin().loginPage("/login").successHandler(successHandler).usernameParameter("username").passwordParameter("password").and().logout().logoutSuccessUrl("/");
 
         http.csrf().disable();
         http.headers().frameOptions().disable();
