@@ -5,6 +5,7 @@ import gr.uniwa.apice.Enum.Courses;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -20,6 +21,8 @@ public class Course {
     private String className;
     @ManyToOne(cascade = CascadeType.ALL)
     private Professor professor;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Student> studentSet;
 
     public Course() {
     }
@@ -65,5 +68,17 @@ public class Course {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Set<Student> getStudentSet() {
+        return studentSet;
+    }
+
+    public void setStudentSet(Set<Student> studentSet) {
+        this.studentSet = studentSet;
+    }
+
+    public void setCourseDetails(Courses courseDetails) {
+        this.courseDetails = courseDetails;
     }
 }

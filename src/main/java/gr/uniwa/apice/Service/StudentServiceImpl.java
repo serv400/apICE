@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -35,23 +36,18 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void addFriend(Student studentA,Student studentB) {
-        if (studentRepo.findStudentByCodeAndFnameAndLname(studentB.getCode(),
-                studentB.getFname(),
-                studentB.getLname())!=null ){
-            studentA.getFriends().add(studentB);
-            for (Student s : studentA.getFriends())
-            System.out.println(s.getFname());
-        }
-        else
-            System.out.println("Not found");
+    public List<Student> showAllStudents() {
+        return studentRepo.findStudentsByRoleOrderByCodeAsc("ROLE_USER");
     }
 
     @Override
-    public List<Student> showAllFriends(Student student) {
-        List<Student> friends = new ArrayList<>();
-        friends.addAll(studentRepo.findStudentByCode(student.getCode()).getFriends());
-       return friends;
+    public Student findExactStudent(String am, String firstName, String lastName) {
+        Student student = studentRepo.findStudentByCodeAndFnameAndLname(am,firstName,lastName);
+        if (student!=null)
+        {
+            return student;
+        }
+        return null;
     }
 
 

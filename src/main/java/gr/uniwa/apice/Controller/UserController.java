@@ -25,24 +25,25 @@ public class UserController {
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "friend-menu";
     }
-    @RequestMapping("/user/{username}/friends/addFriend")
+    @RequestMapping("/user/{username}/friends/searchFriend")
     public String addFriend(@PathVariable String username,Model model){
        model.addAttribute(studentService.getStudentByUsername(username));
         model.addAttribute("student",new Student());
         return "newFriendForm";
     }
-    @RequestMapping(value ="/user/{username}/friends/addFriend",method= RequestMethod.POST)
-    public String saveFriend(@PathVariable String username,Student student){
-         studentService.getStudentByUsername(username);
-            studentService.addFriend(studentService.getStudentByUsername(username),student);
+    @RequestMapping(value ="/user/{username}/friends/searchFriend",method= RequestMethod.POST)
+    public String showExactFriend(@PathVariable String username,Model model,Student student){
+         model.addAttribute(studentService.getStudentByUsername(username));
+         model.addAttribute("friends",studentService.findExactStudent(student.getCode(),
+                 student.getFname(),
+                 student.getLname()));
             return "listFriends";
-
     }
-    @GetMapping("/user/{username}/friends/listFriends")
+    @GetMapping("/user/{username}/friends/listAllFriends")
     public String listFriends(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
-        model.addAttribute("friends",studentService.showAllFriends(studentService.getStudentByUsername(username)));
-        return "listFriends";
+        model.addAttribute("students",studentService.showAllStudents());
+        return "listAllFriends";
     }
     @GetMapping("/user/{username}/courses")
     public String courseMenu(@PathVariable String username,Model model){

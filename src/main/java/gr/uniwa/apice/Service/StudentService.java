@@ -8,6 +8,6 @@ public interface StudentService {
     Student getStudentById(int id);
     Student getStudentByUsername(String username);
     void addStudent(Student student);
-    void addFriend(Student studentA,Student studentB);
-    List<Student> showAllFriends(Student student);
+    List<Student> showAllStudents();
+    Student findExactStudent(String am,String firstName,String lastName);
 }
