@@ -43,7 +43,7 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public Student findExactStudent(String am, String firstName, String lastName) {
         Student student = studentRepo.findStudentByCodeAndFnameAndLname(am,firstName,lastName);
-        if (student!=null)
+        if (student!=null & !student.getRole().equals("ROLE_ADMIN"))
         {
             return student;
         }
