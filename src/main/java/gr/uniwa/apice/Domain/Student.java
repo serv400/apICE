@@ -23,8 +23,8 @@ public class Student {
     @Column(nullable = false)
     private String password;
     private String role="ROLE_USER";
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Friend> friends;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<Student> friends;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Course> courseSet;
 
@@ -33,6 +33,12 @@ public class Student {
         this.lname = lname;
         this.code = code;
         this.username = username;
+    }
+
+    public Student(String fname, String lname, String code) {
+        this.fname = fname;
+        this.lname = lname;
+        this.code = code;
     }
 
     public Student(String fname, String lname, String code, String username, String password, String role) {
@@ -111,11 +117,12 @@ public class Student {
         this.role = role;
     }
 
-    public Set<Friend> getFriends() {
+    public Set<Student> getFriends() {
         return friends;
     }
 
-    public void setFriends(Set<Friend> friends) {
+    public void setFriends(Set<Student> friends) {
         this.friends = friends;
     }
+
 }
