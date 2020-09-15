@@ -9,10 +9,8 @@ public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int profId;
-    private String fname;
+    @Column(unique = true)
     private String lname;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Course> coursesDoing;
 
     public Professor() {
     }
@@ -25,14 +23,6 @@ public class Professor {
         this.profId = profId;
     }
 
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
     public String getLname() {
         return lname;
     }
@@ -41,11 +31,4 @@ public class Professor {
         this.lname = lname;
     }
 
-    public List<Course> getCoursesDoing() {
-        return coursesDoing;
-    }
-
-    public void setCoursesDoing(List<Course> coursesDoing) {
-        this.coursesDoing = coursesDoing;
-    }
 }

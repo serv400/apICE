@@ -115,5 +115,7 @@ public class Student {
         this.role = role;
     }
 
-
+    public void addCourseToSet(Course course){
+        courseSet.add(course);
+    }
 }

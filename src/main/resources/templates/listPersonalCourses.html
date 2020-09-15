@@ -48,24 +48,24 @@
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
                     <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Αποτελεσματα</h2>
+                    <div>
                         <div>
-                            <div th:if="${not #lists.isEmpty(friends)}">
-                                <table class="table-bordered table-striped">
-                                    <tr>
-                                        <th style="color: #fbfcfc">Α.Μ.</th>
-                                        <th style="color: #fbfcfc">Όνομα</th>
-                                        <th style="color: #fbfcfc">Επίθετο</th>
-                                        <th style="color: #fbfcfc">Μαθήματα</th>
-                                    </tr>
-                                    <tr th:each="friend :${friends}" style="color: #fbfcfc">
-                                        <td th:text="${friends.code}" style="color: #fbfcfc"></td>
-                                        <td th:text="${friends.fname}" style="color: #fbfcfc"></td>
-                                        <td th:text="${friends.lname}" style="color: #fbfcfc"></td>
-                                        <td> <a th:href="@{${friends.username}+'/courses/listCourses'}" style="color: #0056b3">Περισσότερα</a></td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <table class="table-bordered table-striped" style="overflow-y: auto">
+                                <tr>
+                                    <th style="color: #fbfcfc">Μάθημα</th>
+                                    <th style="color: #fbfcfc">Ημερομηνία Διεξαγωγής</th>
+                                    <th style="color: #fbfcfc">Αίθουσα</th>
+                                    <th style="color: #fbfcfc">Καθηγητής</th>
+                                </tr>
+                                <tr th:each="course :${personalCourses}">
+                                    <td th:text="${course.courseDetails.fullname}" style="color: #fbfcfc"></td>
+                                    <td th:text="${course.dateOfHappening}" style="color: #fbfcfc"></td>
+                                    <td th:text="${course.className}" style="color: #fbfcfc"></td>
+                                    <td th:text="${course.professor.lname}" style="color: #fbfcfc"></td>
+                                </tr>
+                            </table>
                         </div>
+                    </div>
                 </div>
             </section>
         </div>

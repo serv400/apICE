@@ -4,7 +4,6 @@ package gr.uniwa.apice.Domain;
 import gr.uniwa.apice.Enum.Courses;
 
 import javax.persistence.*;
-import java.util.Calendar;
 import java.util.Set;
 
 @Entity
@@ -17,12 +16,12 @@ public class Course {
     private int version;
     @Enumerated(EnumType.STRING)
     private Courses courseDetails;
-    private Calendar dateOfHappening;
+    private String dateOfHappening;
     private String className;
     @ManyToOne(cascade = CascadeType.ALL)
     private Professor professor;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Student> studentSet;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Student student;
 
     public Course() {
     }
@@ -46,11 +45,11 @@ public class Course {
         this.professor = professor;
     }
 
-    public Calendar getDateOfHappening() {
+    public String getDateOfHappening() {
         return dateOfHappening;
     }
 
-    public void setDateOfHappening(Calendar dateOfHappening) {
+    public void setDateOfHappening(String dateOfHappening) {
         this.dateOfHappening = dateOfHappening;
     }
 
@@ -70,12 +69,12 @@ public class Course {
         this.version = version;
     }
 
-    public Set<Student> getStudentSet() {
-        return studentSet;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentSet(Set<Student> studentSet) {
-        this.studentSet = studentSet;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public void setCourseDetails(Courses courseDetails) {

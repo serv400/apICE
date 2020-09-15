@@ -1,5 +1,6 @@
 package gr.uniwa.apice.Service;
 
+import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface StudentService {
     void addStudent(Student student);
     List<Student> showAllStudents();
     Student findExactStudent(String am,String firstName,String lastName);
+    void addCourseToStudent(Course course,Student student);
 }

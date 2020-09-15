@@ -1,12 +1,14 @@
 package gr.uniwa.apice.Service;
 
 import gr.uniwa.apice.Domain.Course;
+import gr.uniwa.apice.Domain.Student;
 import gr.uniwa.apice.Repository.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CourseServiceImpl implements CourseService{
@@ -14,14 +16,13 @@ public class CourseServiceImpl implements CourseService{
     private CourseRepo courseRepo;
 
     @Override
-    public List<Course> listAllCourses() {
-        List<Course> courses = new ArrayList<>();
-        courses = courseRepo.findAll();
-        return courses;
+    public Course saveCourse(Course course) {
+        return courseRepo.save(course);
     }
 
     @Override
-    public void createCourses() {
-
+    public List<Course> showAllCoursesOfStudent(Student student) {
+        return courseRepo.findCoursesByStudent(student);
     }
+
 }

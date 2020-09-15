@@ -1,19 +1,22 @@
 package gr.uniwa.apice.Controller;
 
+import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
+import gr.uniwa.apice.Enum.Courses;
+import gr.uniwa.apice.Service.CourseService;
 import gr.uniwa.apice.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private CourseService courseService;
 
     @GetMapping("/user/{username}")
     public String homeUSer(@PathVariable String username,Model model){
@@ -49,5 +52,31 @@ public class UserController {
     public String courseMenu(@PathVariable String username,Model model){
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "course-menu";
+    }
+
+    @GetMapping("/user/{username}/courses/addCourse")
+    public String addCourse(@PathVariable String username,Model model){
+        model.addAttribute(studentService.getStudentByUsername(username));
+        model.addAttribute("course",new Course());
+        model.addAttribute("cDetails", Courses.values());
+        return "newCourseForm";
+    }
+
+    @PostMapping(value ="/user/{username}/courses/addCourse")
+    public String showAddedCourse(@ModelAttribute Course course , @PathVariable String username, Errors errors,Model model){
+        if(errors.hasErrors()){
+            return  "newCourseForm";
+        }
+        Student st = studentService.getStudentByUsername(username);
+        model.addAttribute("courseAdded",course);
+        studentService.addCourseToStudent(course,st);
+        return "showCourse";
+    }
+
+    @GetMapping("/user/{username}/courses/listCourses")
+    public String showUserCourses(@PathVariable String username ,Model model){
+        Student st = studentService.getStudentByUsername(username);
+        model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
+        return "listPersonalCourses";
     }
 }

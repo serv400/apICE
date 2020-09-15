@@ -1,5 +1,6 @@
 package gr.uniwa.apice.Service;
 
+import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
 import gr.uniwa.apice.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,13 @@ public class StudentServiceImpl implements StudentService{
             return student;
         }
         return null;
+    }
+
+    @Override
+    public void addCourseToStudent(Course course, Student student) {
+        course.setStudent(student);
+        student.addCourseToSet(course);
+        studentRepo.save(student);
     }
 
 

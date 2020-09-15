@@ -1,5 +1,6 @@
 package gr.uniwa.apice.Repository;
 
+import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
