@@ -79,4 +79,12 @@ public class UserController {
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
         return "listPersonalCourses";
     }
+
+    @GetMapping("/user/{username}/friends/{friendUsername}/courses/list")
+    public String showFriendCourse(@PathVariable String username ,@PathVariable String friendUsername,Model model){
+        studentService.getStudentByUsername(username);
+        Student friend = studentService.getStudentByUsername(friendUsername);
+        model.addAttribute("friendCourses",courseService.showAllCoursesOfStudent(friend));
+        return "listFriendCourses";
+    }
 }

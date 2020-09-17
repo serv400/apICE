@@ -26,7 +26,7 @@
                 </div>
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                     <li class="nav-item">
-                        <a href="./" class="nav-link active">
+                        <a href="../.." class="nav-link active">
                             <span class="d-inline-block mr-3">Επιστροφη</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
@@ -47,7 +47,7 @@
         <div class="tm-section-wrap">
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
-                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Τα μαθηματα μου</h2>
+                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Τα μαθηματα φιλου</h2>
                     <div>
                         <div>
                             <table class="table-bordered table-striped" style="overflow-y: auto">
@@ -57,11 +57,11 @@
                                     <th style="color: #fbfcfc">Αίθουσα</th>
                                     <th style="color: #fbfcfc">Καθηγητής</th>
                                 </tr>
-                                <tr th:each="course :${personalCourses}">
-                                    <td th:text="${course.courseDetails.fullname}" style="color: #fbfcfc"></td>
-                                    <td th:text="${course.dateOfHappening}" style="color: #fbfcfc"></td>
-                                    <td th:text="${course.className}" style="color: #fbfcfc"></td>
-                                    <td th:text="${course.professor.lname}" style="color: #fbfcfc"></td>
+                                <tr th:each="friendCourse :${friendCourses}">
+                                    <td th:text="${friendCourse.courseDetails.fullname}" style="color: #fbfcfc"></td>
+                                    <td th:text="${friendCourse.dateOfHappening}" style="color: #fbfcfc"></td>
+                                    <td th:text="${friendCourse.className}" style="color: #fbfcfc"></td>
+                                    <td th:text="${friendCourse.professor.lname}" style="color: #fbfcfc"></td>
                                 </tr>
                             </table>
                         </div>
