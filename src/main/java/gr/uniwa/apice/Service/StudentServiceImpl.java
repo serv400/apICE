@@ -17,6 +17,8 @@ public class StudentServiceImpl implements StudentService{
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private StudentRepo studentRepo;
+    @Autowired
+    private CourseService courseService;
 
     @Override
     public Student getStudentById(int id) {
@@ -56,6 +58,19 @@ public class StudentServiceImpl implements StudentService{
         course.setStudent(student);
         student.addCourseToSet(course);
         studentRepo.save(student);
+    }
+
+    @Override
+    public Student updateStudentUsername(Student newUNameStudent) {
+        return studentRepo.save(newUNameStudent);
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
+        if (student.getCourseSet().size()!=0){
+        courseService.deleteCoursesByStudent(student);
+        }
+        studentRepo.delete(student);
     }
 
 

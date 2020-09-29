@@ -9,8 +9,10 @@ public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int profId;
-    @Column(unique = true)
     private String lname;
+    @OneToMany
+    private List<Course> courses;
+
 
     public Professor() {
     }

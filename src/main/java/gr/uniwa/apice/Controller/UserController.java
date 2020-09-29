@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
@@ -87,4 +88,17 @@ public class UserController {
         model.addAttribute("friendCourses",courseService.showAllCoursesOfStudent(friend));
         return "listFriendCourses";
     }
+
+    @GetMapping("/user/{username}/options")
+    public String showOptions(@PathVariable String username,Model model){
+        model.addAttribute("student",studentService.getStudentByUsername(username));
+        return "userOptions";
+    }
+
+    @GetMapping("/user/{username}/options/deleteAccount")
+    public String deleteUser(@PathVariable String username){
+        studentService.deleteStudent(studentService.getStudentByUsername(username));
+        return "redirect:/";
+    }
+
 }

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>APICE</title>
-<!--    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css(family=Open)#Sans:400,600}" />-->
+    <!--    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css(family=Open)#Sans:400,600}" />-->
     <link rel="stylesheet" th:href="@{/css/all.min.css}" />
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
     <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
@@ -25,27 +26,15 @@
                     </div>
                 </div>
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
+                    <li class="nav-item">
+                        <a th:href="@{'/user/'+${student.username}+'/options/deleteAccount'}" class="nav-link active">
+                            <span class="d-inline-block mr-3">Διαγραφη Λογαριασμου</span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
                     <li>
-                        <a th:href="@{'/user/'+${student.username}+'/options'}" class="nav-link active">
-                            <span class="d-inline-block mr-3" th:text="${student.fname+' '+ student.lname}"></span>
-                            <span class="d-inline-block tm-white-rect"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a th:href="@{'/user/'+${student.username}+'/friends'}" class="nav-link active">
-                            <span class="d-inline-block mr-3">Φιλοι</span>
-                            <span class="d-inline-block tm-white-rect"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a th:href="@{'/user/'+${student.username}+'/courses'}" class="nav-link active">
-                            <span class="d-inline-block mr-3">Μαθηματα</span>
-                            <span class="d-inline-block tm-white-rect"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/logout" class="nav-link active">
-                            <span class="d-inline-block mr-3">Αποσυνδεση</span>
+                        <a th:href="@{'/user/'+${student.username}}" class="nav-link active">
+                            <span class="d-inline-block mr-3" th:text="Επιστροφη"></span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>

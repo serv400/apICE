@@ -25,4 +25,10 @@ public class CourseServiceImpl implements CourseService{
         return courseRepo.findCoursesByStudent(student);
     }
 
+    @Override
+    public void deleteCoursesByStudent(Student student) {
+        List<Course> courseList =courseRepo.findCoursesByStudent(student);
+            courseList.clear();
+    }
+
 }

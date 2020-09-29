@@ -12,4 +12,6 @@ public interface StudentService {
     List<Student> showAllStudents();
     Student findExactStudent(String am,String firstName,String lastName);
     void addCourseToStudent(Course course,Student student);
+    Student updateStudentUsername(Student newUNameStudent);
+    void deleteStudent(Student student);
 }

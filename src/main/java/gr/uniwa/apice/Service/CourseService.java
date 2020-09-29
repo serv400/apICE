@@ -9,4 +9,5 @@ import java.util.Set;
 public interface CourseService {
     Course saveCourse(Course course);
     List<Course> showAllCoursesOfStudent(Student student);
+    void deleteCoursesByStudent(Student student);
 }
