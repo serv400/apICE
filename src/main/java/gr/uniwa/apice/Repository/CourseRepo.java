@@ -10,4 +10,5 @@ import java.util.Set;
 public interface CourseRepo extends JpaRepository<Course,Integer> {
     List<Course> findAll();
     List<Course> findCoursesByStudent(Student student);
+    Course findCourseByCourseId(int id);
 }

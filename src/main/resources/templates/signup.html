@@ -47,24 +47,42 @@
         <div class="tm-section-wrap">
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
-                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Συνδεση</h2>
+                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Εγγραφη</h2>
                     <form role="form" th:method="post" th:object="${student}">
                         <input type="hidden" th:field="*{studentId}"/>
                         <input type="hidden" th:field="*{role}"/>
-                        <label>Όνομα</label>
-                        <input type="text" id="fname" name="fname"  th:field="*{fname}">
+                        <label>Όνομα:</label>
+                        <br><input type="text" id="fname" name="fname"  th:field="*{fname}">
 
-                        <br><label>Επώνυμο</label>
-                        <input type="text" id="lname" name="lname"  th:field="*{lname}">
+                        <br><label>Επώνυμο:</label>
+                        <br><input type="text" id="lname" name="lname"  th:field="*{lname}">
 
-                        <br><label>A.M.</label>
-                        <input type="text" id="code" name="code"  th:field="*{code}">
+                        <br><label>Aριθμός Μητρώου:</label>
+                        <br><input type="text" required id="code" name="code"  th:field="*{code}">
+                        <br><label>Όνομα Χρήστη:</label>
+                        <br><input type="text" placeholder="abcd" id="username" name="username" th:field="*{username}">
 
-                        <br><label>Όνομα Χρήστη</label>
-                        <input type="text" id="username" name="username" th:field="*{username}">
+                        <br><label>Κωδικός Πρόσβασης:</label>
+                        <br><input type="password" id="password" name="password"  th:field="*{password}">
 
-                        <br><label>Κωδικός Πρόσβασης</label>
-                        <input type="password" id="password" name="password"  th:field="*{password}">
+                        <br><label>Κωδικός Πρόσβασης(επιβεβαίωση):</label>
+                        <br><input type="password" id="passwordConfirm" name="passwordConfirm">
+
+                        <script>
+                            var pass=document.getElementById("password");
+                            var pass2=document.getElementById("passwordConfirm");
+                            function validatePassword(){
+                                if(pass.value != pass2.value) {
+                                    pass2.setCustomValidity("Οι κωδικοί δεν ταιριάζουν!");
+                                } else {
+                                    pass2.setCustomValidity('');
+                                }
+                            }
+
+                            pass.onchange = validatePassword;
+                            pass2.onkeyup = validatePassword;
+
+                        </script>
 
                         <br><input type="submit">
                     </form>

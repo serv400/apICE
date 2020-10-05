@@ -20,7 +20,7 @@ public class Course {
     private String className;
     @ManyToOne(cascade = CascadeType.ALL)
     private Professor professor;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
 
     public Course() {

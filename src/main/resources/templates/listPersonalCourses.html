@@ -49,19 +49,25 @@
                 <div class="tm-bg-white-transparent tm-intro">
                     <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Τα μαθηματα μου</h2>
                     <div>
-                        <div>
+                        <div class="table-responsive">
                             <table class="table-bordered table-striped" style="overflow-y: auto">
                                 <tr>
                                     <th style="color: #fbfcfc">Μάθημα</th>
                                     <th style="color: #fbfcfc">Ημερομηνία Διεξαγωγής</th>
                                     <th style="color: #fbfcfc">Αίθουσα</th>
                                     <th style="color: #fbfcfc">Καθηγητής</th>
+                                    <th style="color: #fbfcfc">Αλλαγή</th>
                                 </tr>
                                 <tr th:each="course :${personalCourses}">
                                     <td th:text="${course.courseDetails.fullname}" style="color: #fbfcfc"></td>
                                     <td th:text="${course.dateOfHappening}" style="color: #fbfcfc"></td>
                                     <td th:text="${course.className}" style="color: #fbfcfc"></td>
                                     <td th:text="${course.professor.lname}" style="color: #fbfcfc"></td>
+                                    <td>
+                                        <a th:href="@{'/user/'+${username}+'/courses/deleteCourse/'+${course.courseId}}" style="color: #fbfcfc">
+                                            <span>Διαγραφη</span>
+                                        </a>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

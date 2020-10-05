@@ -23,7 +23,7 @@ public class Student {
     @Column(nullable = false)
     private String password;
     private String role="ROLE_USER";
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<Course> courseSet;
 
     public Student(String fname, String lname, String code, String username) {

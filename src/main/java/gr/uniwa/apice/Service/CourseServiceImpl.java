@@ -14,6 +14,8 @@ import java.util.Set;
 public class CourseServiceImpl implements CourseService{
     @Autowired
     private CourseRepo courseRepo;
+    @Autowired
+    private StudentService studentService;
 
     @Override
     public Course saveCourse(Course course) {
@@ -30,5 +32,13 @@ public class CourseServiceImpl implements CourseService{
         List<Course> courseList =courseRepo.findCoursesByStudent(student);
             courseList.clear();
     }
+
+    @Override
+    public void deleteCourseOfStudent(Student st,int courseId) {
+       Course course = courseRepo.findCourseByCourseId(courseId);
+       studentService.deleteStudentCourse(course);
+       courseRepo.delete(course);
+    }
+
 
 }

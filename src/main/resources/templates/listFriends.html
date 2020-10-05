@@ -65,7 +65,12 @@
                                     </tr>
                                 </table>
                             </div>
-                        </div>
+                            <div th:else="${#lists.isEmpty(friends)}">
+                                <script>
+                                    alert("Λυπάμαι δεν βρήκα αυτό που έψαχνες");
+                                </script>
+                            </div>
+                </div>
                 </div>
             </section>
         </div>

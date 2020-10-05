@@ -26,15 +26,15 @@
                     </div>
                 </div>
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
-                    <li class="nav-item">
-                        <a th:href="@{'/user/'+${student.username}+'/options/deleteAccount'}" class="nav-link active">
-                            <span class="d-inline-block mr-3">Διαγραφη Λογαριασμου</span>
-                            <span class="d-inline-block tm-white-rect"></span>
-                        </a>
-                    </li>
                     <li>
                         <a th:href="@{'/user/'+${student.username}}" class="nav-link active">
                             <span class="d-inline-block mr-3" th:text="Επιστροφη"></span>
+                            <span class="d-inline-block tm-white-rect"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{'/user/'+${student.username}+'/options/deleteAccount'}" class="nav-link active">
+                            <span class="d-inline-block mr-3">Διαγραφη Λογαριασμου</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>

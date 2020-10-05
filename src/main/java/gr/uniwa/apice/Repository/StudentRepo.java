@@ -9,6 +9,7 @@ import java.util.List;
 public interface StudentRepo extends JpaRepository<Student,Integer> {
         Student findStudentByUsername(String s);
         Student findStudentByStudentId(int id);
-        Student findStudentByCodeAndFnameAndLname(String am,String firstName,String lastName);
+        Student findStudentByCode(String am);
         List<Student> findStudentsByRoleOrderByCodeAsc(String role);
+        Student findStudentByCourseSetContains(Course course);
 }

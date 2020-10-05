@@ -44,13 +44,9 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student findExactStudent(String am, String firstName, String lastName) {
-        Student student = studentRepo.findStudentByCodeAndFnameAndLname(am,firstName,lastName);
-        if (student!=null & !student.getRole().equals("ROLE_ADMIN"))
-        {
-            return student;
-        }
-        return null;
+    public Student findExactStudent(String am) {
+        Student student = studentRepo.findStudentByCode(am);
+        return student;
     }
 
     @Override
@@ -61,9 +57,12 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student updateStudentUsername(Student newUNameStudent) {
-        return studentRepo.save(newUNameStudent);
+    public Student deleteStudentCourse(Course course) {
+       Student st = studentRepo.findStudentByCourseSetContains(course);
+       st.getCourseSet().remove(course);
+        return null;
     }
+
 
     @Override
     public void deleteStudent(Student student) {

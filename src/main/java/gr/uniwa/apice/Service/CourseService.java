@@ -10,4 +10,5 @@ public interface CourseService {
     Course saveCourse(Course course);
     List<Course> showAllCoursesOfStudent(Student student);
     void deleteCoursesByStudent(Student student);
+    void deleteCourseOfStudent(Student st,int courseId);
 }

@@ -38,9 +38,7 @@ public class UserController {
     @RequestMapping(value ="/user/{username}/friends/searchFriend",method= RequestMethod.POST)
     public String showExactFriend(@PathVariable String username,Model model,Student student){
          model.addAttribute(studentService.getStudentByUsername(username));
-         model.addAttribute("friends",studentService.findExactStudent(student.getCode(),
-                 student.getFname(),
-                 student.getLname()));
+         model.addAttribute("friends",studentService.findExactStudent(student.getCode()));
             return "listFriends";
     }
     @GetMapping("/user/{username}/friends/listAllFriends")
@@ -79,6 +77,13 @@ public class UserController {
         Student st = studentService.getStudentByUsername(username);
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
         return "listPersonalCourses";
+    }
+    @GetMapping("/user/{username}/courses/deleteCourse/{id}")
+    public String deleteStudentCourse(@PathVariable String username ,Model model,@PathVariable int id){
+        Student st = studentService.getStudentByUsername(username);
+        courseService.deleteCourseOfStudent(st,id);
+        model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
+        return "redirect:/user/{username}/courses/listCourses";
     }
 
     @GetMapping("/user/{username}/friends/{friendUsername}/courses/list")

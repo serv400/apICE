@@ -10,8 +10,8 @@ public interface StudentService {
     Student getStudentByUsername(String username);
     void addStudent(Student student);
     List<Student> showAllStudents();
-    Student findExactStudent(String am,String firstName,String lastName);
+    Student findExactStudent(String am);
     void addCourseToStudent(Course course,Student student);
-    Student updateStudentUsername(Student newUNameStudent);
+    Student deleteStudentCourse(Course course);
     void deleteStudent(Student student);
 }
