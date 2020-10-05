@@ -55,14 +55,14 @@
                                     th:text="${cDetail.fullname}"
                                     th:value="${cDetail}"></option>
                         </select>
-                        <br><label>Ημερομηνία Διεξαγωγής</label>
-                        <input type="text" id="courseDate" name="courseDate"  th:field="*{dateOfHappening}" placeholder="Τετάρτη 13.00-15.00">
+                        <br><label>Ημερομηνία Διεξαγωγής:</label>
+                        <br><input type="text" id="courseDate" name="courseDate"  th:field="*{dateOfHappening}" placeholder="Τετάρτη 13.00-15.00">
 
-                        <br><label>Αίθουσα</label>
-                        <input type="text" id="courseClass" name="courseClass"  th:field="*{className}" placeholder="SUN">
+                        <br><label>Αίθουσα:</label>
+                        <br><input type="text" id="courseClass" name="courseClass"  th:field="*{className}" placeholder="SUN">
 
-                        <br><label>Όνομα Καθηγητή</label>
-                        <input type="text" id="courseProf" name="courseProf"  th:field="*{professor.lname}" placeholder="Παπαδόπουλος">
+                        <br><label>Όνομα Καθηγητή:</label>
+                        <br><input type="text" id="courseProf" name="courseProf"  th:field="*{professor.lname}" placeholder="Παπαδόπουλος">
 
                         <br><input type="submit">
                     </form>
