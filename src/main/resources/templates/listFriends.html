@@ -65,7 +65,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div th:else="${#lists.isEmpty(friends)}">
+                            <div th:if="${#lists.isEmpty(friends)}">
                                 <script>
                                     alert("Λυπάμαι δεν βρήκα αυτό που έψαχνες");
                                 </script>
