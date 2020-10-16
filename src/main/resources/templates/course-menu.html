@@ -30,13 +30,13 @@
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                     <li class="nav-item">
                         <a th:href="@{'/user/'+${student.username}+'/courses/lab'}" class="nav-link active">
-                            <span class="d-inline-block mr-3">Εργαστήριο</span>
+                            <span class="d-inline-block mr-3">Εργαστηριο</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{'/user/'+${student.username}+'/courses/theory'}" class="disabled" >
-                            <span class="d-inline-block mr-3">Θεωρία(soon)</span>
+                        <a th:href="@{'/user/'+${student.username}+'/courses/theory'}" class="ignore-click" >
+                            <span class="d-inline-block mr-3">Θεωρια (soon)</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
                     </li>
