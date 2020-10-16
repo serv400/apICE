@@ -29,7 +29,7 @@
                 </div>
                 <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                     <li class="nav-item">
-                        <a href="./" class="nav-link active">
+                        <a href="../" class="nav-link active">
                             <span class="d-inline-block mr-3">Επιστροφη</span>
                             <span class="d-inline-block tm-white-rect"></span>
                         </a>
@@ -50,8 +50,8 @@
         <div class="tm-section-wrap">
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
-                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Προσθηκη Μαθηματος</h2>
-                    <form role="form" th:method="post" th:object="${course}" th:action="@{'/user/'+${student.username}+'/courses/addCourse'}">
+                    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Προσθηκη εργαστηριου</h2>
+                    <form role="form" th:method="post" th:object="${course}" th:action="@{'/user/'+${student.username}+'/courses/lab/addCourse'}">
                         <label th:for="courseDetails">Μαθηματα</label>
                         <select th:field="*{courseDetails}" style="width: 400px">
                             <option th:each="cDetail : ${cDetails}"

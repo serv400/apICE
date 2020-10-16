@@ -53,7 +53,7 @@ public class UserController {
         return "course-menu";
     }
 
-    @GetMapping("/user/{username}/courses/addCourse")
+    @GetMapping("/user/{username}/courses/lab/addCourse")
     public String addCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
         model.addAttribute("course",new Course());
@@ -61,7 +61,7 @@ public class UserController {
         return "newCourseForm";
     }
 
-    @PostMapping(value ="/user/{username}/courses/addCourse")
+    @PostMapping(value ="/user/{username}/courses/lab/addCourse")
     public String showAddedCourse(@ModelAttribute Course course , @PathVariable String username, Errors errors,Model model){
         if(errors.hasErrors()){
             return  "newCourseForm";
@@ -72,7 +72,7 @@ public class UserController {
         return "showCourse";
     }
 
-    @GetMapping("/user/{username}/courses/listCourses")
+    @GetMapping("/user/{username}/courses/lab/listCourses")
     public String showUserCourses(@PathVariable String username ,Model model){
         Student st = studentService.getStudentByUsername(username);
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
@@ -83,10 +83,10 @@ public class UserController {
         Student st = studentService.getStudentByUsername(username);
         courseService.deleteCourseOfStudent(st,id);
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
-        return "redirect:/user/{username}/courses/listCourses";
+        return "redirect:/user/{username}/courses/lab/listCourses";
     }
 
-    @GetMapping("/user/{username}/friends/{friendUsername}/courses/list")
+    @GetMapping("/user/{username}/friends/{friendUsername}/courses/lab/list")
     public String showFriendCourse(@PathVariable String username ,@PathVariable String friendUsername,Model model){
         studentService.getStudentByUsername(username);
         Student friend = studentService.getStudentByUsername(friendUsername);
