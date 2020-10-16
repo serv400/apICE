@@ -57,6 +57,11 @@ public class UserController {
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "course-lab-menu";
     }
+    @GetMapping("/user/{username}/courses/lab")
+    public String courseTheoryMenu(@PathVariable String username,Model model){
+        model.addAttribute("student",studentService.getStudentByUsername(username));
+        return "course-theory-menu";
+    }
     @GetMapping("/user/{username}/courses/lab/addCourse")
     public String addCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
