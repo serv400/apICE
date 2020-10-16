@@ -2,15 +2,23 @@ package gr.uniwa.apice.Controller;
 
 import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
+import gr.uniwa.apice.Domain.TheoryCourse;
 import gr.uniwa.apice.Enum.Courses;
+import gr.uniwa.apice.Enum.TheoryCourses;
 import gr.uniwa.apice.Service.CourseService;
 import gr.uniwa.apice.Service.StudentService;
+import gr.uniwa.apice.Service.TheoryCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -18,6 +26,8 @@ public class UserController {
     private StudentService studentService;
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private TheoryCourseService theoryCourseService;
 
     @GetMapping("/user/{username}")
     public String homeUSer(@PathVariable String username,Model model){
@@ -62,6 +72,29 @@ public class UserController {
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "course-theory-menu";
     }
+  /*  @GetMapping("/user/{username}/courses/theory/addCourse")
+    public String addTheoryCourse(@PathVariable String username,Model model){
+        model.addAttribute(studentService.getStudentByUsername(username));
+        model.addAttribute("course",new TheoryCourse());
+        model.addAttribute("cDetails", TheoryCourses.values());
+        return "newTheoryCourseForm";
+    }
+
+    @PostMapping(value ="/user/{username}/courses/theory/addCourse")
+    public String showAddedTheoryCourse(@ModelAttribute Set<TheoryCourse> courses ,
+                                        @PathVariable String username, Errors errors){
+        if(errors.hasErrors()){
+            return  "newTheoryCourseForm";
+        }
+        Student st = studentService.getStudentByUsername(username);
+        if (course!=null){
+
+            studentService.addTheoryCoursesToStudent();
+            return "listPersonalTheoryCourses";
+        }
+        else
+            return "redirect:/user/{username}/courses/theory";
+    }*/
     @GetMapping("/user/{username}/courses/lab/addCourse")
     public String addCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
@@ -86,6 +119,12 @@ public class UserController {
         Student st = studentService.getStudentByUsername(username);
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
         return "listPersonalCourses";
+    }
+    @GetMapping("/user/{username}/courses/theory/listCourses")
+    public String showUserTheoryCourses(@PathVariable String username ,Model model){
+        Student st = studentService.getStudentByUsername(username);
+        model.addAttribute("personalCourses",theoryCourseService.showAllTheoryCoursesOfStudent(st));
+        return "listPersonalTheoryCourses";
     }
     @GetMapping("/user/{username}/courses/deleteCourse/{id}")
     public String deleteStudentCourse(@PathVariable String username ,Model model,@PathVariable int id){

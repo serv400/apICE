@@ -1,6 +1,33 @@
 package gr.uniwa.apice.Enum;
 
-public enum Courses {
+
+public enum TheoryCourses {
+    MATHS1("Μαθηματική Ανάλυση I"),
+    MATHS2("Μαθηματική Ανάλυση ΙΙ"),
+    PHYSICS("Φυσική"),
+    ALGEBRA("Γραμμική Άλγεβρα"),
+    STARTOFIT("Εισαγωγή στην Επιστήμη των Υπολογιστών"),
+    EXPERTISEMATHS("Διακριτά Μαθηματικά"),
+    CREATIONOFALGORITHMS("Σχεδίαση και Ανάλυση Αλγορίθμων"),
+    STATISTICS("Πιθανότητες και Στατιστική"),
+    ALGORITHS("Αλγόριθμοι και Πολυπλοκότητα"),
+    TECSCRIPTS("Σύνταξη Τεχνικών Κειμένων"),
+    KNOWLEDGEMANAGEMENT("Διαχείριση Γνώσης"),
+    DATAMINING("Εξόρυξη Δεδομένων"),
+    NOLOGICSYS("Συστήματα Ασαφούς Λογικής και Αβεβαιότητας"),
+    BETTERING("Βελτιστοποίηση"),
+    NETOFVISUALS("Δίκτυα Οπτικών Επικοινωνιών"),
+    FRAMEOFCOMMSAFETY("Κανονιστικό Πλαίσιο Ασφάλειας Επικοινωνιών και Πληροφοριών"),
+    CRYPTOGRAPHY("Κρυπτογραφία"),
+    WORKMANAGEMENT("Διαχείριση Έργου"),
+    LAW("Δίκαιο και Κυβερνοηθική"),
+    EDUCATIONALIT("Εκπαιδευτική Τεχνολογία & Διδακτική της Πληροφορικής"),
+    PHILOSOPHYOFIT("Φιλοσοφία της Πληροφορικής και εφαρμογές των ΤΠΕ"),
+    LARGEDATAMANAGEMENT("Διαχείριση Δεδομένων Μεγάλης Κλίμακας"),
+    GAMESTHEORY("Θεωρία Παίγνιων"),
+    GAMESDESIGN("Σχεδιασμός Παιχνιδιών και Εφαρμογών Εικονικής και Επαυξημένης Πραγματικότητας"),
+    NONLINEALSYS("Στοχαστικά και μη Γραμμικά Συστήματα"),
+    INTECONTINETALNETS("Ευρυζωνικά Δίκτυα"),
     C("Προγραμματισμός Υπολογιστών","1ο","Βασικός Κύκλος Σπουδών"),
     CPP("Αντικειμενοστρεφής Προγραμματισμός","2ο","Βασικός Κύκλος Σπουδών"),
     LOGICDESIGN("Ψηφιακή Σχεδίαση","2ο","Βασικός Κύκλος Σπουδών"),
@@ -28,12 +55,13 @@ public enum Courses {
     MICROELECTRONICS("Μικροηλεκτρονική","6ο","Βασικός Κύκλος Σπουδών"),
     DISTRIBUTEDSYSTEMS("Κατανεμημένα Συστήματα","6ο","Βασικός Κύκλος Σπουδών"),
     DIGITALCOMMUNICATIONS("Ψηφιακές Επικοινωνίες","6ο","Βασικός Κύκλος Σπουδών"),
+    TECHNOLOGYOFCOMPSYS("Τεχνολογία Υπολογιστικών Συστημάτων","7ο","Κύκλος Σπουδών Εξειδίκευσης"),
     HISTORYOFTECHNOLOGY("Ιστορία της Πληροφορίας","Μάθημα Γενικής Παιδείας"),
     INFORMATICSANDSOCIETY("Πληροφορική και Κοινωνία– Τεχνική της Έκφρασης","Μαθημα Γενικής Παιδείας"),
     DESIGNANDDEVELOPMENTOFOS("Σχεδιασμός και Ανάπτυξη Πληροφοριακών Συστημάτων","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
     INFORMATIONRETRIEVAL("Ανάκτηση Πληροφορίας","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
+    COMPUTINGTHEORY("Θεωρία Υπολογισμού","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
     PATTERNRECOGNITIONMACHINELEARNING("Αναγνώριση Προτύπων και Μηχανική Μάθηση","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
-    TECHNOLOGYOFCOMPSYS("Τεχνολογία Υπολογιστικών Συστημάτων","7ο","Κύκλος Σπουδών Εξειδίκευσης"),
     SPECIALSOFTWAREENGINEERING("Ειδικά Θέματα Τεχνολογίας Λογισμικού","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
     IMGPROCESSING("Επεξεργασία Εικόνας","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
     OPERATIONALRESEARCH("Επιχειρησιακή Έρευνα","Ροή Λογισμικού και Πληροφοριακών Συστημάτων"),
@@ -78,19 +106,31 @@ public enum Courses {
     TECHNOLOGYANDDESIGNOFMOBILES("Τεχνολογία και Προγραμματισμός Κινητών Συσκευών","Ροή Δικτύων Υπολογιστών και Επικοινωνιών")
     ;
 
-    private String fullname;
+    private String  fullname;
     private String semester;
     private String direction;
 
-    Courses(String fullname, String direction) {
+    TheoryCourses(String fullname) {
+        this.fullname = fullname;
+    }
+
+    TheoryCourses(String fullname, String semester, String direction) {
+        this.fullname = fullname;
+        this.semester = semester;
+        this.direction = direction;
+    }
+
+    TheoryCourses(String fullname, String direction) {
         this.fullname = fullname;
         this.direction = direction;
     }
 
-    Courses(String fullname, String semester, String direction) {
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
         this.fullname = fullname;
-        this.semester = semester;
-        this.direction = direction;
     }
 
     public String getSemester() {
@@ -107,13 +147,5 @@ public enum Courses {
 
     public void setDirection(String direction) {
         this.direction = direction;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
     }
 }

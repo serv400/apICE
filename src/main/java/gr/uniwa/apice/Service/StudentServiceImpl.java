@@ -2,6 +2,7 @@ package gr.uniwa.apice.Service;
 
 import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
+import gr.uniwa.apice.Domain.TheoryCourse;
 import gr.uniwa.apice.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -53,6 +55,12 @@ public class StudentServiceImpl implements StudentService{
     public void addCourseToStudent(Course course, Student student) {
         course.setStudent(student);
         student.addCourseToSet(course);
+        studentRepo.save(student);
+    }
+
+    @Override
+    public void addTheoryCoursesToStudent(Set<TheoryCourse> courses, Student student){
+        student.addTheoryCourseToSet(courses);
         studentRepo.save(student);
     }
 

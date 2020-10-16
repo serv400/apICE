@@ -1,5 +1,7 @@
 package gr.uniwa.apice.Domain;
 
+import gr.uniwa.apice.Enum.TheoryCourses;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +27,8 @@ public class Student {
     private String role="ROLE_USER";
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<Course> courseSet;
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+    private Set<TheoryCourse> theoryCourseSet;
 
     public Student(String fname, String lname, String code, String username) {
         this.fname = fname;
@@ -118,4 +122,10 @@ public class Student {
     public void addCourseToSet(Course course){
         courseSet.add(course);
     }
+
+    public void addTheoryCourseToSet(Set<TheoryCourse> courses){
+        for (TheoryCourse c : courses)
+            theoryCourseSet.add(c);
+    }
+
 }
