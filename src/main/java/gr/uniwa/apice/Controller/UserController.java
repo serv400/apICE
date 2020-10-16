@@ -12,13 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -72,24 +70,19 @@ public class UserController {
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "course-theory-menu";
     }
-  /*  @GetMapping("/user/{username}/courses/theory/addCourse")
+/*  @GetMapping("/user/{username}/courses/theory/addCourse")
     public String addTheoryCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
-        model.addAttribute("course",new TheoryCourse());
-        model.addAttribute("cDetails", TheoryCourses.values());
+        model.addAttribute("tcDetails", TheoryCourses.values());
         return "newTheoryCourseForm";
     }
 
     @PostMapping(value ="/user/{username}/courses/theory/addCourse")
-    public String showAddedTheoryCourse(@ModelAttribute Set<TheoryCourse> courses ,
-                                        @PathVariable String username, Errors errors){
-        if(errors.hasErrors()){
-            return  "newTheoryCourseForm";
-        }
+    public String showAddedTheoryCourse(@PathVariable String username,
+                                        Model model,BindingResult result,){
         Student st = studentService.getStudentByUsername(username);
-        if (course!=null){
+        if (!result.hasErrors()){
 
-            studentService.addTheoryCoursesToStudent();
             return "listPersonalTheoryCourses";
         }
         else

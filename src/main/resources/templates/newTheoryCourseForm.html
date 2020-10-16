@@ -51,10 +51,10 @@
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
                     <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Προσθηκη μαθηματων εξαμηνου</h2>
-                    <form role="form" th:method="post" th:object="${course}" th:action="@{'/user/'+${student.username}+'/courses/theory/addCourse'}">
-                        <th:block th:each="cDetail : ${cDetails}">
-                            <input type="checkbox" th:value="${cDetail}"/>
-                            <label th:text="${cDetail.fullname}" style="color: white;font-size: small"></label>
+                    <form role="form" th:method="post" th:object="${theoryCourse}" th:action="@{'/user/'+${student.username}+'/courses/theory/addCourse'}">
+                        <th:block th:each="tcDetail : ${tcDetails}">
+                            <input type="checkbox" th:value="${tcDetail}"/>
+                            <label th:text="${tcDetail.fullname}" style="color: white;font-size: small"></label>
                             <br>
                         </th:block>
                         <br>
