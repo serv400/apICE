@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TheoryCourseService {
     List<TheoryCourse> showAllTheoryCoursesOfStudent(Student student);
+    void deleteTheoryCourseOfStudent(Student st , int thCourseId);
 }

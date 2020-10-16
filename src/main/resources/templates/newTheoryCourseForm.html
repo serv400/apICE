@@ -51,15 +51,14 @@
             <section class="tm-section">
                 <div class="tm-bg-white-transparent tm-intro">
                     <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Προσθηκη μαθηματων εξαμηνου</h2>
-                    <form role="form" th:method="post" th:object="${theoryCourse}" th:action="@{'/user/'+${student.username}+'/courses/theory/addCourse'}">
-                        <th:block th:each="tcDetail : ${tcDetails}">
-                            <input type="checkbox" th:value="${tcDetail}"/>
-                            <label th:text="${tcDetail.fullname}" style="color: white;font-size: small"></label>
-                            <br>
-                        </th:block>
-                        <br>
-                        <input type="reset" value="Αναίρεση επιλογών">
-                        <input type="submit" value="Προσθήκη">
+                    <form role="form" th:method="post" th:object="${thCourse}" th:action="@{'/user/'+${student.username}+'/courses/theory/addCourse'}">
+                        <label>Θεωρητικα μαθηματα</label>
+                        <select th:field="*{courseDetails}" style="width: 400px">
+                            <option th:each="tcDetail : ${tcDetails}"
+                                    th:text="${tcDetail.fullname}"
+                                    th:value="${tcDetail}"></option>
+                        </select>
+                        <br><input type="submit" value="Προσθήκη">
                     </form>
                 </div>
             </section>

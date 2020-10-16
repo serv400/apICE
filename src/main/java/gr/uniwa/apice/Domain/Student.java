@@ -123,9 +123,16 @@ public class Student {
         courseSet.add(course);
     }
 
-    public void addTheoryCourseToSet(Set<TheoryCourse> courses){
-        for (TheoryCourse c : courses)
-            theoryCourseSet.add(c);
+    public Set<TheoryCourse> getTheoryCourseSet() {
+        return theoryCourseSet;
+    }
+
+    public void setTheoryCourseSet(Set<TheoryCourse> theoryCourseSet) {
+        this.theoryCourseSet = theoryCourseSet;
+    }
+
+    public void addTheoryCourseToSet(TheoryCourse course){
+            theoryCourseSet.add(course);
     }
 
 }

@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface TheoryCourseRepo extends JpaRepository<TheoryCourse,Integer> {
     List<TheoryCourse> findTheoryCourseByStudent(Student student);
+    TheoryCourse findTheoryCourseByTheoryCourseId(int id);
 }

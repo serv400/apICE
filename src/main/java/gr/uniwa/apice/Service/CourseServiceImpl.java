@@ -2,7 +2,9 @@ package gr.uniwa.apice.Service;
 
 import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
+import gr.uniwa.apice.Domain.TheoryCourse;
 import gr.uniwa.apice.Repository.CourseRepo;
+import gr.uniwa.apice.Repository.TheoryCourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.Set;
 public class CourseServiceImpl implements CourseService{
     @Autowired
     private CourseRepo courseRepo;
+    @Autowired
+    private TheoryCourseRepo theoryCourseRepo;
     @Autowired
     private StudentService studentService;
 
@@ -28,6 +32,11 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public List<TheoryCourse> showAllTheoryCoursesOfStudent(Student student) {
+        return theoryCourseRepo.findTheoryCourseByStudent(student);
+    }
+
+    @Override
     public void deleteCoursesByStudent(Student student) {
         List<Course> courseList =courseRepo.findCoursesByStudent(student);
             courseList.clear();
@@ -39,6 +48,8 @@ public class CourseServiceImpl implements CourseService{
        studentService.deleteStudentCourse(course);
        courseRepo.delete(course);
     }
+
+
 
 
 }

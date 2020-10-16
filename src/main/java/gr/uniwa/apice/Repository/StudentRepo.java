@@ -2,6 +2,7 @@ package gr.uniwa.apice.Repository;
 
 import gr.uniwa.apice.Domain.Course;
 import gr.uniwa.apice.Domain.Student;
+import gr.uniwa.apice.Domain.TheoryCourse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface StudentRepo extends JpaRepository<Student,Integer> {
         Student findStudentByCode(String am);
         List<Student> findStudentsByRoleOrderByCodeAsc(String role);
         Student findStudentByCourseSetContains(Course course);
+        Student findStudentByTheoryCourseSetContains(TheoryCourse theoryCourse);
 }

@@ -70,24 +70,27 @@ public class UserController {
         model.addAttribute("student",studentService.getStudentByUsername(username));
         return "course-theory-menu";
     }
-/*  @GetMapping("/user/{username}/courses/theory/addCourse")
+  @GetMapping("/user/{username}/courses/theory/addCourse")
     public String addTheoryCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
+        model.addAttribute("thCourse",new TheoryCourse());
         model.addAttribute("tcDetails", TheoryCourses.values());
         return "newTheoryCourseForm";
     }
 
     @PostMapping(value ="/user/{username}/courses/theory/addCourse")
-    public String showAddedTheoryCourse(@PathVariable String username,
-                                        Model model,BindingResult result,){
-        Student st = studentService.getStudentByUsername(username);
-        if (!result.hasErrors()){
-
-            return "listPersonalTheoryCourses";
-        }
-        else
+    public String showAddedTheoryCourse(@ModelAttribute TheoryCourse theoryCourse ,
+                                        @PathVariable String username,
+                                        Model model,Errors errors){
+        if (errors.hasErrors()){
             return "redirect:/user/{username}/courses/theory";
-    }*/
+        }
+            Student st = studentService.getStudentByUsername(username);
+            model.addAttribute("student",st);
+            model.addAttribute("theoryCourseAdded",theoryCourse);
+            studentService.addTheoryCoursesToStudent(theoryCourse,st);
+            return "redirect:/user/{username}/courses/theory/addCourse";
+    }
     @GetMapping("/user/{username}/courses/lab/addCourse")
     public String addCourse(@PathVariable String username,Model model){
         model.addAttribute(studentService.getStudentByUsername(username));
@@ -97,7 +100,8 @@ public class UserController {
     }
 
     @PostMapping(value ="/user/{username}/courses/lab/addCourse")
-    public String showAddedCourse(@ModelAttribute Course course , @PathVariable String username, Errors errors,Model model){
+    public String showAddedCourse(@ModelAttribute Course course ,
+                                  @PathVariable String username, Errors errors,Model model){
         if(errors.hasErrors()){
             return  "newCourseForm";
         }
@@ -126,6 +130,13 @@ public class UserController {
         model.addAttribute("personalCourses",courseService.showAllCoursesOfStudent(st));
         return "redirect:/user/{username}/courses/lab/listCourses";
     }
+    @GetMapping("/user/{username}/courses/deleteTheoryCourse/{id}")
+    public String deleteStudentTheoryCourse(@PathVariable String username ,Model model,@PathVariable int id){
+        Student st = studentService.getStudentByUsername(username);
+        theoryCourseService.deleteTheoryCourseOfStudent(st,id);
+        model.addAttribute("personalTheoryCourses",theoryCourseService.showAllTheoryCoursesOfStudent(st));
+        return "redirect:/user/{username}/courses/theory/listCourses";
+    }
 
     @GetMapping("/user/{username}/friends/{friendUsername}/courses/lab/list")
     public String showFriendCourse(@PathVariable String username ,@PathVariable String friendUsername,Model model){
@@ -133,6 +144,14 @@ public class UserController {
         Student friend = studentService.getStudentByUsername(friendUsername);
         model.addAttribute("friendCourses",courseService.showAllCoursesOfStudent(friend));
         return "listFriendCourses";
+    }
+    @GetMapping("/user/{username}/friends/{friendUsername}/courses/theory/list")
+    public String showFriendTheoryCourse(@PathVariable String username ,
+                                         @PathVariable String friendUsername,Model model){
+        studentService.getStudentByUsername(username);
+        Student friend = studentService.getStudentByUsername(friendUsername);
+        model.addAttribute("friendTheoryCourses",theoryCourseService.showAllTheoryCoursesOfStudent(friend));
+        return "listFriendTheoryCourses";
     }
 
     @GetMapping("/user/{username}/options")

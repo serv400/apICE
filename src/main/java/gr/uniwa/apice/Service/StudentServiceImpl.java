@@ -59,8 +59,9 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void addTheoryCoursesToStudent(Set<TheoryCourse> courses, Student student){
-        student.addTheoryCourseToSet(courses);
+    public void addTheoryCoursesToStudent(TheoryCourse course, Student student){
+        course.setStudent(student);
+        student.addTheoryCourseToSet(course);
         studentRepo.save(student);
     }
 
@@ -68,6 +69,13 @@ public class StudentServiceImpl implements StudentService{
     public Student deleteStudentCourse(Course course) {
        Student st = studentRepo.findStudentByCourseSetContains(course);
        st.getCourseSet().remove(course);
+        return null;
+    }
+
+    @Override
+    public Student deleteTheoryCourse(TheoryCourse theoryCourse) {
+        Student student = studentRepo.findStudentByTheoryCourseSetContains(theoryCourse);
+        student.getTheoryCourseSet().remove(theoryCourse);
         return null;
     }
 

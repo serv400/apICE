@@ -56,12 +56,14 @@
                             <table class="table-bordered table-striped" style="overflow-y: auto">
                                 <tr>
                                     <th style="color: #fbfcfc">Μάθημα</th>
+                                    <th style="color: #fbfcfc">Αλλαγή</th>
                                 </tr>
                                 <tr th:each="course :${personalCourses}">
-                                    <td th:text="${course.courseDetails.fullname}" style="color: cornflowerblue"></td>
-<!--                                        <a th:href="@{'/user/'+${username}+'/courses/deleteCourse/'+${course.courseId}}" style="color: #fbfcfc">-->
-<!--                                            <span>Διαγραφη</span>-->
-<!--                                        </a>-->
+                                    <td th:text="${course.courseDetails.fullname}" style="color: lightskyblue"></td>
+                                    <td>
+                                        <a th:href="@{'/user/'+${username}+'/courses/deleteTheoryCourse/'+${course.theoryCourseId}}" style="color: #fbfcfc">
+                                            <span style="color: darkred">Διαγραφη</span>
+                                        </a>
                                     </td>
                                 </tr>
                             </table>

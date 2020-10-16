@@ -14,7 +14,8 @@ public interface StudentService {
     List<Student> showAllStudents();
     Student findExactStudent(String am);
     void addCourseToStudent(Course course,Student student);
-    void addTheoryCoursesToStudent(Set<TheoryCourse> courses, Student student);
+    void addTheoryCoursesToStudent(TheoryCourse course, Student student);
     Student deleteStudentCourse(Course course);
+    Student deleteTheoryCourse(TheoryCourse theoryCourse);
     void deleteStudent(Student student);
 }

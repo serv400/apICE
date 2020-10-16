@@ -13,9 +13,18 @@ public class TheoryCourseServiceImpl implements  TheoryCourseService{
 
     @Autowired
     private TheoryCourseRepo theoryCourseRepo;
+    @Autowired
+    private StudentService studentService;
+
 
     @Override
     public List<TheoryCourse> showAllTheoryCoursesOfStudent(Student student) {
         return theoryCourseRepo.findTheoryCourseByStudent(student);
+    }
+    @Override
+    public void deleteTheoryCourseOfStudent(Student st, int thCourseId) {
+        TheoryCourse theoryCourse = theoryCourseRepo.findTheoryCourseByTheoryCourseId(thCourseId);
+        studentService.deleteTheoryCourse(theoryCourse);
+        theoryCourseRepo.delete(theoryCourse);
     }
 }

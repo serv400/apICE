@@ -53,18 +53,20 @@
                     <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Αποτελεσματα</h2>
                         <div>
                             <div th:if="${not #lists.isEmpty(friends)}">
-                                <table class="table-bordered table-striped">
+                                <table class="table-bordered table-striped" style="overflow-x: auto">
                                     <tr>
                                         <th style="color: #fbfcfc">Α.Μ.</th>
                                         <th style="color: #fbfcfc">Όνομα</th>
                                         <th style="color: #fbfcfc">Επίθετο</th>
-                                        <th style="color: #fbfcfc">Μαθήματα</th>
+                                        <th colspan="2" style="color: #fbfcfc">Μαθήματα</th>
                                     </tr>
                                     <tr th:each="friend :${friends}" style="color: #fbfcfc">
                                         <td th:text="${friends.code}" style="color: #fbfcfc"></td>
                                         <td th:text="${friends.fname}" style="color: #fbfcfc"></td>
                                         <td th:text="${friends.lname}" style="color: #fbfcfc"></td>
-                                        <td> <a th:href="@{${friends.username}+'/courses/lab/list'}" style="color: #0056b3">Περισσότερα</a></td>
+                                        <td> <a th:href="@{${friends.username}+'/courses/lab/list'}" style="color: #0056b3">(Ε)</a></td>
+                                        <td> <a th:href="@{${student.username}+'/courses/theory/list'}" style="color: #0056b3" >(Θ)</a></td>
+
                                     </tr>
                                 </table>
                             </div>
