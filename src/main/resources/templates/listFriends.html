@@ -65,7 +65,7 @@
                                         <td th:text="${friends.fname}" style="color: #fbfcfc"></td>
                                         <td th:text="${friends.lname}" style="color: #fbfcfc"></td>
                                         <td> <a th:href="@{${friends.code}+'/courses/lab/list'}" style="color: #0056b3">(Ε)</a></td>
-                                        <td> <a th:href="@{${student.code}+'/courses/theory/list'}" style="color: #0056b3" >(Θ)</a></td>
+                                        <td> <a th:href="@{${friends.code}+'/courses/theory/list'}" style="color: #0056b3" >(Θ)</a></td>
 
                                     </tr>
                                 </table>
