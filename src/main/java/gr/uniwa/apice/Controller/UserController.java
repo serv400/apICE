@@ -138,18 +138,18 @@ public class UserController {
         return "redirect:/user/{username}/courses/theory/listCourses";
     }
 
-    @GetMapping("/user/{username}/friends/{friendUsername}/courses/lab/list")
-    public String showFriendCourse(@PathVariable String username ,@PathVariable String friendUsername,Model model){
+    @GetMapping("/user/{username}/friends/{am}/courses/lab/list")
+    public String showFriendCourse(@PathVariable String username ,@PathVariable String am,Model model){
         studentService.getStudentByUsername(username);
-        Student friend = studentService.getStudentByUsername(friendUsername);
+        Student friend = studentService.findExactStudent(am);
         model.addAttribute("friendCourses",courseService.showAllCoursesOfStudent(friend));
         return "listFriendCourses";
     }
-    @GetMapping("/user/{username}/friends/{friendUsername}/courses/theory/list")
+    @GetMapping("/user/{username}/friends/{am}/courses/theory/list")
     public String showFriendTheoryCourse(@PathVariable String username ,
-                                         @PathVariable String friendUsername,Model model){
+                                         @PathVariable String am,Model model){
         studentService.getStudentByUsername(username);
-        Student friend = studentService.getStudentByUsername(friendUsername);
+        Student friend = studentService.findExactStudent(am);
         model.addAttribute("friendTheoryCourses",theoryCourseService.showAllTheoryCoursesOfStudent(friend));
         return "listFriendTheoryCourses";
     }
@@ -164,6 +164,24 @@ public class UserController {
     public String deleteUser(@PathVariable String username){
         studentService.deleteStudent(studentService.getStudentByUsername(username));
         return "redirect:/";
+    }
+
+    @GetMapping("/user/{username}/options/updatePswd")
+    public String updPasswordFrom(@PathVariable String username,Model model){
+        model.addAttribute("currStudent",studentService.getStudentByUsername(username));
+        return "updatePwd";
+    }
+
+    @PostMapping("/user/{username}/options/updatePswd")
+    public String updPasswordFromSubmit(@PathVariable String username,
+                                        @ModelAttribute("currStudent") Student studentChanged,
+                                        Model model){
+        System.out.println(studentChanged.toString());
+        Student studentOriginal = studentService.getStudentByUsername(username);
+        System.out.println(studentOriginal.toString());
+        studentService.updateCurrentStudentPassword(studentOriginal,studentChanged);
+        model.addAttribute("username",username);
+         return "redirect:/user/{username}";
     }
 
 }

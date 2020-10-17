@@ -135,4 +135,18 @@ public class Student {
             theoryCourseSet.add(course);
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", code='" + code + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", courseSet=" + courseSet +
+                ", theoryCourseSet=" + theoryCourseSet +
+                '}';
+    }
 }

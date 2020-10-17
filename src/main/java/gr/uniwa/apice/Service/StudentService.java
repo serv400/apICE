@@ -10,6 +10,7 @@ import java.util.Set;
 public interface StudentService {
     Student getStudentById(int id);
     Student getStudentByUsername(String username);
+    Student getStudentByUsernameAndID(String username,String id);
     void addStudent(Student student);
     List<Student> showAllStudents();
     Student findExactStudent(String am);
@@ -18,4 +19,5 @@ public interface StudentService {
     Student deleteStudentCourse(Course course);
     Student deleteTheoryCourse(TheoryCourse theoryCourse);
     void deleteStudent(Student student);
+    void updateCurrentStudentPassword(Student studentOriginal,Student studentChanged);
 }

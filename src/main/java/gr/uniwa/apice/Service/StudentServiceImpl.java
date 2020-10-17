@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -32,6 +29,12 @@ public class StudentServiceImpl implements StudentService{
     public Student getStudentByUsername(String username) {
         Student student = studentRepo.findStudentByUsername(username);
         return student;
+    }
+
+    @Override
+    public Student getStudentByUsernameAndID(String username, String id) {
+        Student st = studentRepo.findStudentByUsernameAndCode(username,id);
+        return st;
     }
 
     @Override
@@ -86,6 +89,13 @@ public class StudentServiceImpl implements StudentService{
         courseService.deleteCoursesByStudent(student);
         }
         studentRepo.delete(student);
+    }
+
+    @Override
+    public void updateCurrentStudentPassword(Student studentOriginal,Student studentChanged) {
+        studentChanged.setPassword(bCryptPasswordEncoder.encode(studentChanged.getPassword()));
+        studentOriginal.setPassword(studentChanged.getPassword());
+        studentRepo.save(studentOriginal);
     }
 
 
