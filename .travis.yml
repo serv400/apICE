@@ -4,5 +4,5 @@ jdk:
 deploy:
  provider: heroku
  api-key: 
-  secure: $HEROKU_API_KEY
+  secure: 191da0ba-015b-4b95-b96e-c7636421c340
  app: lippep-apice-uniwa
