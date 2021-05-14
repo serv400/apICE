@@ -4,5 +4,5 @@ jdk:
 deploy:
  provider: heroku
  api-key: 
-  secure: 191da0ba-015b-4b95-b96e-c7636421c340
+  secure: 86f74cc2-a396-49f3-b199-642a75078a0f
  app: apice-uniwa
