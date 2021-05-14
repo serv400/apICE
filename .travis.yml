@@ -3,6 +3,5 @@ jdk:
  - openjdk8
 deploy:
  provider: heroku
- api-key: 
-  secure: 86f74cc2-a396-49f3-b199-642a75078a0f
+ api-key: 86f74cc2-a396-49f3-b199-642a75078a0f
  app: apice-uniwa
