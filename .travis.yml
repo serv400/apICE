@@ -6,5 +6,3 @@ deploy:
  api-key: 
   secure: 191da0ba-015b-4b95-b96e-c7636421c340
  app: apice-uniwa
- on:
-    repo:  serv400/apICE
